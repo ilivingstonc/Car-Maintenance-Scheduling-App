@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import CarList from '../CarList'
 import CreateCarForm from '../CreateCarForm'
 import EditCarModal from '../EditCarModal'
+// import FindCarForm from '../FindCarForm'
 import {Grid} from 'semantic-ui-react'
+
 
 class CarContainer extends Component {
   constructor(props){
@@ -25,14 +27,6 @@ class CarContainer extends Component {
     this.getCars();
   }
 
-
-  // getCarData = async () => {
-
-  //   try {
-  //     const carData = await.fetch("")
-  //   }
-  // }
-
   getCars = async () => {
 
     try {
@@ -54,7 +48,7 @@ class CarContainer extends Component {
     try {
 
         // We have to send JSON
-        // createdDogResponse variable will store the response from the express API
+        // createdCarResponse variable will store the response from the express API
         const createdCarResponse = await fetch(process.env.REACT_APP_API_URL + '/api/v1/cars/', {
             method: 'POST',
             body: JSON.stringify(carFromForm),
@@ -84,6 +78,8 @@ class CarContainer extends Component {
     // request address will start with 'http://localhost:8000'
     // becuase after we create it, we want to add it to the dogs array
 }
+
+
 
 deleteCar = async (id) => {
    console.log(id);
@@ -168,6 +164,7 @@ closeAndEdit = async (e) => {
             </Grid.Column>
             <Grid.Column>
              <CreateCarForm addCar={this.addCar}/>
+             {/* <FindCarForm findCarr={this.findCar}/> */}
              <EditCarModal open={this.state.showEditModal} carToEdit={this.state.carToEdit} handleEditChange={this.handleEditChange} closeAndEdit={this.closeAndEdit}/>
             </Grid.Column>
           </Grid.Row>
