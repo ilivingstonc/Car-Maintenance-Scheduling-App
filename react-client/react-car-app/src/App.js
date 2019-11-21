@@ -1,30 +1,32 @@
 import React from 'react';
+import Register from './Register';
+import Login from './Login';
 import './App.css';
 import CarContainer from './CarContainer';
-// import {Route, Switch} from 'react-router-dom';
+import HeaderComponent from './HeaderComponent';
+import { Route, Switch } from 'react-router-dom';
 
 
-// const My404 = () => {
-//   return (
-//     <div>
-//       <h3>You are lost.</h3>
-//     </div>
-//   )
-// }
+const My404 = () => {
+  return (
+    <div>
+      <h3>Uh oh, page not found.</h3>
+    </div>
+  )
+}
 
 function App() {
   return (
     <main>
-      <CarContainer />
-  </main>
+      <HeaderComponent />
+      <Switch>
+        <Route exact path="/" component={ Register } />
+        <Route exact path="/login" component={ Login } />
+        <Route exact path="/cars" component={ CarContainer } />
+        <Route component={ My404 } />
+      </Switch>
+    </main>
   );
 }
 
 export default App;
-
-
-// {/* <Switch>
-// <Route exact path="/" component={Register} />
-// <Route exact path="/cars" component={ CarContainer } />
-// <Route component={ My404 } />
-// </Switch> */}
