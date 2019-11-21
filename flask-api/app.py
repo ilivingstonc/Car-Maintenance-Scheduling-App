@@ -5,6 +5,7 @@ from flask_cors import CORS
 
 from resources.cars import car
 from resources.users import user
+
 from flask_login import LoginManager
 
 
@@ -43,18 +44,12 @@ def after_request(response):
 
 CORS(car, origins=['http://localhost:3000'], supports_credentials=True, url_prefix='/api/v1/cars') # adding this line
 
-
 app.register_blueprint(car, url_prefix='/api/v1/cars')
+
 
 CORS(user, origins=['http://localhost:3000'], supports_credentials=True, url_prefix='/api/v1/user') # adding this line
 
-
 app.register_blueprint(user, url_prefix='/api/v1/user')
-
-# The default URL ends in / ("my-website.com/").
-# @app.route('/')
-# def index():
-#     return 'hi'
 
 
 
