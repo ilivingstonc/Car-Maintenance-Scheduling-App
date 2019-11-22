@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/" component={ Register } />
         <Route exact path="/login" component={ Login } />
         <Route exact path="/cars" component={ CarContainer } />
+        <Route exact path="/" component={ CarContainer } />
         <Route component={ My404 } />
       </Switch>
     </main>

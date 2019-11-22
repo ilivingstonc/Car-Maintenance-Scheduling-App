@@ -1,8 +1,14 @@
 import datetime
 from peewee import *
 from flask_login import UserMixin
+from playhouse.postgres_ext import *
 
-DATABASE = SqliteDatabase('cars.sqlite')
+DATABASE = PostgresqlExtDatabase(
+    'car_app',
+    user='home',
+    password='password',
+    host='localhost'
+)
 
 class User(UserMixin, Model):
     email = CharField(unique=True)
@@ -15,8 +21,8 @@ class User(UserMixin, Model):
 class Car(Model):
     make = CharField()
     model = CharField()
-    image = CharField()
     year = IntegerField()
+    data = JSONField(default={})
     created_at = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
