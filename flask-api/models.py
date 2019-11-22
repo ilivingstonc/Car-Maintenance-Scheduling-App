@@ -5,7 +5,7 @@ from playhouse.postgres_ext import *
 
 DATABASE = PostgresqlExtDatabase(
     'car_app',
-    user='home',
+    user='ian',
     password='password',
     host='localhost'
 )
